@@ -29,6 +29,16 @@
     font-size: 18pt;
 }
 
+.modal-dialog{
+    background-color: var(--swatch-complement);
+}
+
+.modal-header{
+    background-color: var(--swatch-primary);
+    color: white;
+    text-align: center;
+}
+
 #left-sidebar {
     background-color: var(--swatch-complement);
     color: rgb(233,237,240);
@@ -79,6 +89,21 @@
     cursor:pointer;
     background-color: var(--swatch-complement);
     font-weight: bold;
+}
+
+.modal-footer{
+    text-align: center;
+    padding-top: 50px;
+}
+.modal-button{
+    cursor:pointer;
+    background-color: var(--swatch-primary);
+    font-weight: bold;
+    padding: 15px 32px;
+}
+
+.topList{
+    background-color: var(--swatch-accent);
 }
 
 .todo-list-button:hover {

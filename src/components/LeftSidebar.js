@@ -6,6 +6,9 @@ import AddBox from '@material-ui/icons/AddBox';
 class LeftSidebar extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            show: this.props.showAddListButton
+        }
     }
 
     handleAddNewList = () => {
@@ -13,15 +16,22 @@ class LeftSidebar extends Component {
     }
 
     render() {
+        let showInfo = null;
+        if(this.props.showAddListButton){
+            showInfo = <AddBox 
+                            id="add-list-button"
+                            className="material-icons todo_button"
+                            onClick={this.handleAddNewList}/>
+        }
+        else{
+            showInfo = null;
+        }
         return (
             <div id="left-sidebar">
                 <div id="left-sidebar-header" class="section-header">
                     <span class="left-sidebar-header-text">Todolists</span>
                     <span class="left-sidebar-controls" id="add-undo-redo-box">
-                        <AddBox 
-                            id="add-list-button"
-                            className="material-icons todo_button"
-                            onClick={this.handleAddNewList} />
+                        {showInfo}
                     </span>
                 </div>
                 <div id="todo-lists-list">
@@ -30,7 +40,10 @@ class LeftSidebar extends Component {
                         <ListLink
                             key={toDoList.id}
                             toDoList={toDoList}                                // PASS THE LIST TO THE CHILDREN
-                            loadToDoListCallback={this.props.loadToDoListCallback} />  // PASS THE CALLBACK TO THE CHILDREN
+                            loadToDoListCallback={this.props.loadToDoListCallback}
+                            getIndexCallback={this.props.getIndexCallback}
+                            changeNameCallback={this.props.changeNameCallback}/>  // PASS THE CALLBACK TO THE CHILDREN
+                            
                     ))
                 }
                 </div>
